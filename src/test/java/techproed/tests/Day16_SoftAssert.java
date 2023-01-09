@@ -12,6 +12,7 @@ public class Day16_SoftAssert {
         System.out.println("Line 11 Code");
         softAssert.assertEquals(3,5); //Fails
         System.out.println("Line 13 Code");
+        softAssert.assertEquals("apple","orange");
         softAssert.assertAll();
     }
 }
