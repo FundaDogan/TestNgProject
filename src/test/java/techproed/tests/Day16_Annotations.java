@@ -12,7 +12,9 @@ public class Day16_Annotations {
     @Test(priority=number) : prioritize/order test case execution.
     NOTE: Tests that has no priority parameter, has a priority of 0. Test(priority=0)
     test execute in alphabetical order.
-    -3,0(Also
+    -3,0(Also tests with no priority),4,9...ascending order.
+    don't give same priority.
+    if no priority , tests will run in alphabetical order.
      */
     @BeforeSuite
     public void beforeSuit(){
