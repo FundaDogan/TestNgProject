@@ -36,7 +36,7 @@ public class Driver {
 
 
             //    NOTE: sel 4.5
-            //driver = WebDriverManager.chromedriver().create();  afyter test, close the browser.
+            //driver = WebDriverManager.chromedriver().create();  after test, close the browser.
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
