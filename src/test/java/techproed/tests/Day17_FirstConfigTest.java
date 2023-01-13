@@ -15,5 +15,12 @@ public class Day17_FirstConfigTest {
         //verify the title contains Techpro education
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertTrue(actualTitle.contains(ConfigReader.getProperty("app_title")));
+
+        /*
+        ConfigReader.getProperty("app_title") == Techpro Education | Online It Courses & Bootcamps
+        bu kod; ConfigReader classindaki get property metodu ile configuration.properties dokumanindaki app_title'i
+        getir demek oluyor
+        properties bir dosya uzantisi.
+        */
     }
 }

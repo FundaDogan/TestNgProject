@@ -17,11 +17,13 @@ public class Day17_OpenSourceLogin {
     2. In test class, create page object to access the objects in the page class
      */
 
-        @Test
-        public void loginTest() {
+    @Test
+    public void loginTest() {
 
             OpenSourcePage openSourcePage = new OpenSourcePage();
+
             Driver.getDriver().get(ConfigReader.getProperty("open_source_URL"));
+
             openSourcePage.userName.sendKeys("Admin");
             openSourcePage.password.sendKeys("admin123");
             openSourcePage.submitButton.click();
