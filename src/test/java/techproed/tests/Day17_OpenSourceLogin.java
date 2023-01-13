@@ -14,6 +14,7 @@ public class Day17_OpenSourceLogin {
     -password
     -button
     Note: Use constructor to instantiate page objects
+
     2. In test class, create page object to access the objects in the page class
      */
 
