@@ -1,6 +1,9 @@
-package techproed.tests;
+package techproed.practice;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -195,31 +198,53 @@ public class XYZBankTest {
 //        Type 100 into "Amount to be Deposited" input
         xyzBankCustomerPage.amountToBeDepositedInput.sendKeys("100");
 
-//        Assert that "Deposit Successful" is displayed
-
 //        Click on "Deposit"(Submit) button
+        xyzBankCustomerPage.depositSubmitButton.click();
+
+//        Assert that "Deposit Successful" is displayed
+        Assert.assertTrue(xyzBankCustomerPage.depositSuccessMessage.isDisplayed());
+
 
 //        Click on "Withdrawal" button
+        xyzBankCustomerPage.withdrawalButton.click();
 
 //        Type 100 into "Amount to be Withdrawn" input
+        xyzBankCustomerPage.withdrawSubmitButton.click();//yanlislikla dogru cikti
+        xyzBankCustomerPage.amountToBeWithdrawn.sendKeys("100"+ Keys.ENTER);
 
 //        Click on "Withdraw"(Submit) button
+       // xyzBankCustomerPage.withdrawSubmitButton.click(); selenium click is not working
+        //  try actions class to click
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.click(xyzBankCustomerPage.withdrawSubmitButton).perform();
 
 //        Assert that "Transaction  Successful" is displayed
+        //ReusableMethods.verifyElementDisplayed(xyzBankCustomerPage.transactionSuccessMessage);
 
-//        Click on "Logout" button
+        //        Click on "Logout" button
+        xyzBankCustomerPage.logOutButton.click();
 
 //        Click on "Home" button
+        xyzBankManagerPage.homeButton.click();
 
 //        Click on "Bank Manager Login" button
+        xyzBankHomePage.bankManagerLoginButton.click();
 
 //        Click on "Customers" button
+        xyzBankManagerPage.customersButton.click();
 
 //        Click on each "Delete" button
+        for (WebElement w : xyzBankManagerPage.deleteButtons) {
+            w.click();
+        }
 
 //        Count table row numbers
+        int numberOfRowsAfterDelete = xyzBankManagerPage.deleteButtons.size();
 
 //        Assert that number of customers is 0
+        Assert.assertEquals(0, numberOfRowsAfterDelete);
+
 
 
     }

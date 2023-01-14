@@ -1,7 +1,9 @@
-package techproed.tests;
+package techproed.homework;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.TestCenterPage;
+import techproed.pages.TestHomePage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 
@@ -16,9 +18,13 @@ public class TestCenterLogin {
         TestCenterPage testCenterPage = new TestCenterPage();
 
         Driver.getDriver().get(ConfigReader.getProperty("url_testcenter.techproeducation"));
-        testCenterPage.userName.sendKeys(ConfigReader.getProperty("testcenter_username"));
-        testCenterPage.password.sendKeys(ConfigReader.getProperty("testcenter_pwd"));
+        testCenterPage.userName.sendKeys("techproed");
+        testCenterPage.password.sendKeys("SuperSecretPassword");
         testCenterPage.submit.click();
+
+        //verify login is succesful
+        TestHomePage testHomePage = new TestHomePage();
+        Assert.assertTrue(testHomePage.loginMessage.isDisplayed());
 
         Driver.closeDriver();
 

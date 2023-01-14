@@ -23,4 +23,34 @@ public class XYZBankCustomerPage {
     @FindBy(xpath = "//input[@placeholder='amount']")
     public WebElement amountToBeDepositedInput;
 
+    @FindBy(xpath = "//button[.='Deposit']")
+    public WebElement depositSubmitButton;
+
+    @FindBy(xpath = "//span[@ng-show='message']")
+    public WebElement depositSuccessMessage;
+
+    @FindBy(xpath = "//button[@ng-class='btnClass3']")
+    public WebElement withdrawalButton;
+
+    @FindBy(xpath = "//input[@type='number']")
+    public WebElement amountToBeWithdrawn;
+
+    @FindBy(xpath = "//button[.='Withdraw']")
+    public WebElement withdrawSubmitButton;
+
+    @FindBy(xpath = "//span[.='Transaction successful']")
+    public WebElement transactionSuccessMessage;
+
+    @FindBy(xpath = "//button[.='Logout']")
+    public WebElement logOutButton;
+
+
+
+
+
+
+
+
+
+
 }

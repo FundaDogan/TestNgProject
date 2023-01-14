@@ -51,4 +51,7 @@ public class XYZBankManagerPage {
     @FindBy(xpath = "//button[.='Home']")
     public WebElement homeButton;
 
+    @FindBy(xpath = "//button[.='Delete']")
+    public List<WebElement> deleteButtons;
+
 }
