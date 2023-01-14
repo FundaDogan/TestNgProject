@@ -6,6 +6,7 @@ import techproed.pages.TestCenterPage;
 import techproed.pages.TestHomePage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
+import techproed.utilities.ReusableMethods;
 
 public class TestCenterLogin {
 
@@ -25,6 +26,8 @@ public class TestCenterLogin {
         //verify login is succesful
         TestHomePage testHomePage = new TestHomePage();
         Assert.assertTrue(testHomePage.loginMessage.isDisplayed());
+
+       // ReusableMethods.verifyElementDisplayed(testHomePage.loginMessage);  done with reusable method, recommended
 
         Driver.closeDriver();
 
