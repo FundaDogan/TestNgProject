@@ -4,54 +4,78 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
+import techproed.pages.LoginPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
+import techproed.utilities.ReusableMethods;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class Day19_ReservationTest {
 
-    HomePage homePage = new HomePage();
-    Faker faker = new Faker();
-
+    HomePage homePage;
+    LoginPage loginPage;
+    Faker faker;
     @Test
     public void reservationTest(){
 //        Given user is on the home page
         Driver.getDriver().get(ConfigReader.getProperty("app_home_url"));
 
+//        LOGIN THE APP
+        homePage=new HomePage();
+        loginPage= new LoginPage();
+        ReusableMethods.waitFor(3);
+        homePage.homePageLoginLink.click();
+//        sending credentials and clicking on login button
+        ReusableMethods.waitFor(3);
+        loginPage.email.sendKeys("jack@gmail.com");
+        ReusableMethods.waitFor(3);
+        loginPage.pwd.sendKeys("12345");
+        ReusableMethods.waitFor(3);
+        loginPage.login.click();
+        ReusableMethods.waitFor(3);
+//        Verify login is successful
+        ReusableMethods.verifyElementDisplayed(homePage.userID);
+
+
+
+
+//        NOW THAT U LOGGED IN THE APPLICATION, WE CAN ENTER THE REQUIRED FIELDS
 //        And select a car
+
         Select carSelect = new Select(homePage.selectACar);
         carSelect.selectByIndex(3);
-
 //        And enter pick up field
-        homePage.pickUpLocation.sendKeys(Faker.instance(Locale.CANADA).address().cityName());
-
+        faker=new Faker();
+        homePage.pickUpLocation.sendKeys(Faker.instance(Locale.US).address().cityName());
 //        And enter drop off field
-        homePage.dropOfLocation.sendKeys(Faker.instance(Locale.CANADA).address().cityName());
+        homePage.dropOfLocation.sendKeys(Faker.instance(Locale.US).address().cityName());
 
-//        pick up date
-//        pick up time
+//        Pick Up date
+//        Pick up time
 //        drop off date
-//        drop off time
+//        drop of time
 
         SimpleDateFormat simpleDateFormat1=new SimpleDateFormat("hhmmaa");
         Calendar calendar=Calendar.getInstance();
 
 //        enter pick up date
-        homePage.pickUpDate.sendKeys("10/10/2023");
+        homePage.pickUpDate.sendKeys("10/10/2045");
 //        enter pick up hour
         homePage.pickUpTime.sendKeys(simpleDateFormat1.format(calendar.getTime()));
 //       enter drop of date
-        homePage.dropOffDate.sendKeys("12/11/2023");
+        homePage.dropOffDate.sendKeys("12/11/2045");
 //        enter drop of hour
         homePage.dropOffTime.sendKeys(simpleDateFormat1.format(calendar.getTime()));
 
-
-//        homePage.pickUpTime.sendKeys("07:00");
+//        =====================================================
 //        And click continue reservation
+        homePage.continueReservationButton.click();
+
+//        CAR IS NOT RESERVED There is a BLOCKER......
+
 //        And verify complete reservation screen pops up
 //        And enter card number
 //        And enter name on the card
@@ -68,5 +92,7 @@ public class Day19_ReservationTest {
 //        And verify Reservations page is displayed
 //        And click on Home link
 //        Then verify the home page is displayed
+
+        Driver.closeDriver();
     }
 }

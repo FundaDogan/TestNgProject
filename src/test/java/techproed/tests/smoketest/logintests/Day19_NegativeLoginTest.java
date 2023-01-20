@@ -42,6 +42,8 @@ public class Day19_NegativeLoginTest {
         String errorMessage = loginPage.incorrectEmailPassMessage.getText();
         Assert.assertEquals(errorMessage,"User with email fake@bluerentalcars.com not found");
         ReusableMethods.getScreenshot("NegativeLoginScreenshot");
+
+        Driver.closeDriver();
     }
 
 

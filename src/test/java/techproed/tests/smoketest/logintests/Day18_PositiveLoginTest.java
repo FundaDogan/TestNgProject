@@ -50,8 +50,7 @@ public class Day18_PositiveLoginTest {
             //alternatively...
             //ReusableMethods.verifyElementNotDisplayed(homePage.homePageLoginLink);
 
-
-
+            Driver.closeDriver();
 
     }
 }
