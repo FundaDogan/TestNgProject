@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+
+    <listeners>
+        <!--        Attaching the Listeners-->
+        <listener class-name="techproed.utilities.Listeners"></listener>
+    </listeners>
+
     <test verbose="2" preserve-order="true"
           name="C:/Users/funda/IdeaProjects/testNgProject/src/test/java/techproed/tests/listeners/ListenersTest3.java">
         <classes>
