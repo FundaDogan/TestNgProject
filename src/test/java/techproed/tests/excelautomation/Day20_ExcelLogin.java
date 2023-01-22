@@ -49,50 +49,23 @@ public class Day20_ExcelLogin {
         } catch (Exception e) {
         }
         ReusableMethods.waitFor(3);
-
-/*
-        I AM ON LOGIN PAGE
-        send username
-        send password
-        click on login BUTTON
-        I AM ON HOME PAGE
-        **********PATTERN 1**********
-        click on user id
-        click on log out
-        click on ok
-        I AM ON HOME PAGE AGAIN
-        *********PATTERN 2***********
-        click on login link
-        send username
-        send password
-        click on login Button
-        I AM ON HOME PAGE AGAIN
-        *****************
-         click on user id
-        click on log out
-        click on ok
-        I AM ON HOME PAGE AGAIN
-         ********************
-        click on login link
-        send username
-        send password
-        click on login Button
-        I AM ON HOME PAGE AGAIN
-
- */
     }
 
         @Test
         public void customerLoginTest() {
-        String path = "./src/test/java/resources/mysmoketestdata.xlsx";
+        String path = "./src/test/java/resources/mysmoketestdata.xlsx";// path of excel file
+
             String sheetName = "customer_info";
-            excelUtils=new ExcelUtils(path,sheetName);
-//        getDataList() method returns all excel data
-//        we stored that data in allTestData variable
+
+            excelUtils=new ExcelUtils(path,sheetName);//This Constructor is to open and access the excel file
+
+//        getDataList() method returns all excel data in list of map of string
             allTestData=excelUtils.getDataList();
+//        we stored that data in allTestData variable --> List<Map<String,String>> allTestData;
 //        System.out.println(allTestData);
 //        System.out.println(excelUtils.getColumnsNames());
 //        System.out.println(excelUtils.getCellData(2,1));
+
 //        USING LOOP GET THE VALUES FROM THE MAP AND SEND IN THE UI
             for (Map<String,String> eachData :allTestData){
 //            Takes us to the login page
@@ -114,6 +87,36 @@ public class Day20_ExcelLogin {
         Driver.closeDriver();
     }
 }
+
+/*     LOGIN FLOW
+        click on login LINK          ------>>>>>>  homePage.homePageLoginLink.click(); --->> TRY WHEN LINK IS THERE---> 1st TRY CATCH--> logIn
+        send username
+        send password                 ----->>>>> DONE
+        click on login BUTTON
+        I AM ON HOME PAGE
+        **********PATTERN 1**********
+        click on user id
+        click on log out             ----->>>>>>2nd TRY CATCH -> logIn
+        click on ok
+        I AM ON HOME PAGE AGAIN
+        click on login LINK
+        *********PATTERN 2***********
+        send username
+        send password           ----->>>>>>>>>>>>>>>>>@Test Method is used to send credentials and verification
+        click on login Button
+        I AM ON HOME PAGE AGAIN
+        *****************
+         click on user id
+        click on log out
+        click on ok                     ----->>>>>>2nd TRY CATCH -> logIn
+        I AM ON HOME PAGE AGAIN
+        click on login LINK
+         ********************
+        send username
+        send password       ----->>>>>>>>>>>>>>>>>@Test Method is used to send credentials and verification
+        click on login Button
+        I AM ON HOME PAGE AGAIN
+ */
 
 
 
