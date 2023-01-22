@@ -7,7 +7,7 @@ import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.ReusableMethods;
 
-public class ListenersTest3 {
+public class ListenersTest5 {
     HomePage homePage;
     LoginPage loginPage;
 
@@ -27,7 +27,7 @@ public class ListenersTest3 {
         ReusableMethods.waitFor(3);
         loginPage.email.sendKeys("jack@gmail.com");
         ReusableMethods.waitFor(3);
-        loginPage.pwd.sendKeys("12345");
+        loginPage.pwd.sendKeys("1234567890");// wrong pwd
         ReusableMethods.waitFor(3);
         loginPage.login.click();
         ReusableMethods.waitFor(3);

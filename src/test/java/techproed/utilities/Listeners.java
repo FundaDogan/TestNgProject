@@ -42,7 +42,7 @@ public class Listeners implements ITestListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+// onTestFailure a test fail olunca scrrensshot al method ekledim
     }
     @Override
     public void onTestSkipped(ITestResult result) {

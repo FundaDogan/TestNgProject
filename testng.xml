@@ -2,15 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
 
+    <!--        listener tag is used to add Listeners-->
     <listeners>
-        <!--        Attaching the Listeners-->
+        <!--        Path of the Listener Utility class-->
         <listener class-name="techproed.utilities.Listeners"></listener>
     </listeners>
 
     <test verbose="2" preserve-order="true"
-          name="C:/Users/funda/IdeaProjects/testNgProject/src/test/java/techproed/tests/listeners/ListenersTest3.java">
+          name="C:/Users/funda/IdeaProjects/testNgProject/src/test/java/techproed/tests/listeners/ListenersTest5.java">
         <classes>
-            <class name="techproed.tests.listeners.ListenersTest3">
+            <class name="techproed.tests.listeners.ListenersTest5">
                 <methods>
                     <include name="US100201_Admin_Login"/>
                 </methods>
